@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:		consul
-Version:	1.4.4
+Version:	1.6.1
 Release:	1%{dist}
 Summary:	A service mesh solution
 License:	Mozilla Public License 2.0
@@ -115,6 +115,9 @@ rm -rf %{buildroot}
 %endif
 
 %changelog
+* Mon Oct 14 2019 Elia Pinto <pinto.elia@gmail.com> - 1.6.1-1
+- Update to version 1.6.1
+
 * Tue Apr 02 2019 Giuseppe Ragusa <giuseppe.ragusa@fastmail.fm> - 1.4.4-1
 - Update to version 1.4.4
 - Modified spec to properly support CentOS/RHEL 7
