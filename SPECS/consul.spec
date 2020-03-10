@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:		consul
-Version:	1.6.1
+Version:	1.7.1
 Release:	1%{dist}
 Summary:	A service mesh solution
 License:	Mozilla Public License 2.0
@@ -36,7 +36,7 @@ Consul is distributed, highly available, and extremely scalable.
 %build
 %install
 %{__install} -d -m 0755 %{buildroot}%{_sbindir} \
-                        %{buildroot}%{_sysconfdir}/%{name} \
+                        %{buildroot}%{_sysconfdir}/%{name}.d \
                         %{buildroot}%{_sysconfdir}/logrotate.d \
                         %{buildroot}%{_sysconfdir}/sysconfig \
                         %{buildroot}%{_localstatedir}/{lib,log}/%{name}
@@ -51,7 +51,7 @@ Consul is distributed, highly available, and extremely scalable.
 %endif
          
 %{__install} -m 0755 %{name} %{buildroot}%{_sbindir}
-%{__install} -m 0600 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}
+%{__install} -m 0600 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}.d
 %if 0%{?rhel} < 7
 %{__install} -m 0755 %{SOURCE2} %{buildroot}%{_sysconfdir}/rc.d/init.d/%{name}
 %else
@@ -95,7 +95,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,consul,consul,-)
-%attr(-,root,root) %{_sbindir}/%{name}
+%attr(-,root,root) %{_sbindir}/%{name}.d
 %attr(-,root,root) %{_sysconfdir}/logrotate.d/%{name}
 %if 0%{?rhel} < 7
 %attr(-,root,root) %{_sysconfdir}/rc.d/init.d/%{name}
@@ -105,7 +105,7 @@ rm -rf %{buildroot}
 %attr(-,root,root) %{_prefix}/lib/firewalld/services/%{name}.xml
 %endif
 %attr(-,root,root) %{_sysconfdir}/sysconfig/%{name}
-%config(noreplace) %{_sysconfdir}/%{name}/%{name}.*
+%config(noreplace) %{_sysconfdir}/%{name}.d/%{name}.*
 %{_localstatedir}/lib/%{name}
 %{_localstatedir}/log/%{name}
 %if 0%{?rhel} >= 7
