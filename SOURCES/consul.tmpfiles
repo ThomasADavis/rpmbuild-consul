@@ -1,1 +1,1 @@
-/run/consul  755 consul consul
+d /run/consul 0755 consul consul -
