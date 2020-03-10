@@ -95,7 +95,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,consul,consul,-)
-%attr(-,root,root) %{_sbindir}/%{name}.d
+%attr(-,root,root) %{_sbindir}/%{name}
 %attr(-,root,root) %{_sysconfdir}/logrotate.d/%{name}
 %if 0%{?rhel} < 7
 %attr(-,root,root) %{_sysconfdir}/rc.d/init.d/%{name}
