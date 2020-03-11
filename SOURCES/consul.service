@@ -7,8 +7,8 @@ After=network-online.target
 [Service]
 User=consul
 Group=consul
-EnvironmentFile=/etc/sysconfig/consul
-ExecStart=/usr/sbin/consul agent -config-dir ${CONSUL_CONFIG_DIR} ${CONSUL_OPTS}
+EnvironmentFile=-/etc/sysconfig/consul
+ExecStart=/usr/sbin/consul $CMD_OPTS
 ExecReload=/usr/sbin/consul reload
 KillMode=process
 Restart=on-failure

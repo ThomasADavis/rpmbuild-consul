@@ -11,7 +11,7 @@ Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{vers
 %else
 Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
 %endif
-Source1:        %{name}.hcl
+# Source1:        %{name}.hcl
 Source2:        %{name}.init
 Source3:        %{name}.logrotate
 Source4:        %{name}.sysconfig
@@ -51,7 +51,7 @@ Consul is distributed, highly available, and extremely scalable.
 %endif
          
 %{__install} -m 0755 %{name} %{buildroot}%{_sbindir}
-%{__install} -m 0600 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}.d
+# %{__install} -m 0600 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}.d
 %if 0%{?rhel} < 7
 %{__install} -m 0755 %{SOURCE2} %{buildroot}%{_sysconfdir}/rc.d/init.d/%{name}
 %else
@@ -105,7 +105,7 @@ rm -rf %{buildroot}
 %attr(-,root,root) %{_prefix}/lib/firewalld/services/%{name}.xml
 %endif
 %attr(-,root,root) %{_sysconfdir}/sysconfig/%{name}
-%config(noreplace) %{_sysconfdir}/%{name}.d/%{name}.*
+# %config(noreplace) %{_sysconfdir}/%{name}.d/%{name}.*
 %{_localstatedir}/lib/%{name}
 %{_localstatedir}/log/%{name}
 %if 0%{?rhel} >= 7
