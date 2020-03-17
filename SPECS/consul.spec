@@ -17,7 +17,11 @@ Source3:        %{name}.logrotate
 Source4:        %{name}.sysconfig
 Source5:        %{name}.service
 Source6:        %{name}.tmpfiles
-Source7:        %{name}.firewalld
+Source7:        %{name}-agent.xml
+Source8:        %{name}-dns.xml
+Source9:        %{name}-http.xml
+Source10:       %{name}-server.xml
+Source11:       %{name}-server-wan.xml
 %if 0%{?rhel} >= 7
 Requires:         firewalld-filesystem
 Requires(post):   systemd-units
@@ -57,7 +61,11 @@ Consul is distributed, highly available, and extremely scalable.
 %else
 %{__install} -m 0644 %{SOURCE5} %{buildroot}%{_unitdir}/%{name}.service
 %{__install} -m 0644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}/%{name}.conf
-%{__install} -m 0644 %{SOURCE7} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
+%{__install} -m 0644 %{SOURCE7} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}-agent.xml
+%{__install} -m 0644 %{SOURCE8} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}-dns.xml
+%{__install} -m 0644 %{SOURCE9} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}-http.xml
+%{__install} -m 0644 %{SOURCE10} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}-server.xml
+%{__install} -m 0644 %{SOURCE11} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}-server-wan.xml
 %endif
 %{__install} -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 %{__install} -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
@@ -115,6 +123,13 @@ rm -rf %{buildroot}
 %endif
 
 %changelog
+* Tues Mar 17 2020 Thomas DAvis - 1.7.2
+- Fixes for Centos8
+- Broke apart firewalld service file
+- updated to consul 1.7.2
+- use /etc/consul.d not /etc/consul
+- add build scripts
+
 * Mon Oct 14 2019 Elia Pinto <pinto.elia@gmail.com> - 1.6.1-1
 - Update to version 1.6.1
 

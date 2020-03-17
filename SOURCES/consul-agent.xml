@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>consul-agent</short>
+  <description>Consul - A service mesh solution. Port used by agents to handle gossip in the LAN.</description>
+  <port protocol="tcp" port="8301"/>
+  <port protocol="udp" port="8301"/>
+</service>

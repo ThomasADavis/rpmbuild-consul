@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>consul-http</short>
+  <description>Consul - A service mesh solution. Port used by clients to talk to the HTTP API.</description>
+  <port protocol="tcp" port="8500"/>
+</service>
