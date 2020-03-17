@@ -11,7 +11,6 @@ Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{vers
 %else
 Source0:        https://releases.hashicorp.com/%{name}/%{version}/%{name}_%{version}_linux_386.zip
 %endif
-# Source1:        %{name}.hcl
 Source2:        %{name}.init
 Source3:        %{name}.logrotate
 Source4:        %{name}.sysconfig
@@ -113,7 +112,6 @@ rm -rf %{buildroot}
 %attr(-,root,root) %{_prefix}/lib/firewalld/services/%{name}.xml
 %endif
 %attr(-,root,root) %{_sysconfdir}/sysconfig/%{name}
-# %config(noreplace) %{_sysconfdir}/%{name}.d/%{name}.*
 %{_localstatedir}/lib/%{name}
 %{_localstatedir}/log/%{name}
 %if 0%{?rhel} >= 7
@@ -123,13 +121,6 @@ rm -rf %{buildroot}
 %endif
 
 %changelog
-* Tues Mar 17 2020 Thomas DAvis - 1.7.2
-- Fixes for Centos8
-- Broke apart firewalld service file
-- updated to consul 1.7.2
-- use /etc/consul.d not /etc/consul
-- add build scripts
-
 * Mon Oct 14 2019 Elia Pinto <pinto.elia@gmail.com> - 1.6.1-1
 - Update to version 1.6.1
 
