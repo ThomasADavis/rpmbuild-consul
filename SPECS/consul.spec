@@ -109,7 +109,11 @@ rm -rf %{buildroot}
 %else
 %attr(-,root,root) %{_unitdir}/%{name}.service
 %attr(-,root,root) %{_tmpfilesdir}/%{name}.conf
-%attr(-,root,root) %{_prefix}/lib/firewalld/services/%{name}.xml
+%attr(-,root,root) %{_prefix}/lib/firewalld/services/%{name}-agent.xml
+%attr(-,root,root) %{_prefix}/lib/firewalld/services/%{name}-dns.xml
+%attr(-,root,root) %{_prefix}/lib/firewalld/services/%{name}-http.xml
+%attr(-,root,root) %{_prefix}/lib/firewalld/services/%{name}-server.xml
+%attr(-,root,root) %{_prefix}/lib/firewalld/services/%{name}-server-wan.xml
 %endif
 %attr(-,root,root) %{_sysconfdir}/sysconfig/%{name}
 %{_localstatedir}/lib/%{name}
